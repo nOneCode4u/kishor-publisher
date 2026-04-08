@@ -2,7 +2,7 @@
   "batch_id": "20260408_0527",
   "total": 3,
   "detected_at_utc": "2026-04-08T05:27:12Z",
-  "batch_started_at_utc": null,
+  "batch_started_at_utc": "2026-04-08T18:30:39Z",
   "items": [
     {
       "index": 0,
@@ -12,9 +12,9 @@
       "size_mb": 14.18,
       "scheduled_at_utc": "2026-04-08T18:30:00Z",
       "scheduled_ist_display": "00:00 IST",
-      "cronjob_job_id": 7461775,
-      "status": "pending",
-      "uploaded_at_utc": null
+      "cronjob_job_id": null,
+      "status": "uploaded",
+      "uploaded_at_utc": "2026-04-08T18:31:01Z"
     },
     {
       "index": 1,
