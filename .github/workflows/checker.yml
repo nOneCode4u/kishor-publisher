@@ -1,0 +1,52 @@
+name: 📖 Kishor Publisher — Checker
+
+# Runs once daily at 07:00 IST (01:30 UTC).
+# Scans kishor.ebalbharati.in for new magazine issues.
+# If new issues found → builds queue → creates cron-job.org upload jobs → notifies owner.
+# If nothing new → exits silently in ~15 seconds.
+
+on:
+  schedule:
+    - cron: '30 3 * * *'   # 03:30 UTC = 09:00 IST every day
+  workflow_dispatch:        # For manual runs and testing
+
+concurrency:
+  group: checker
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  checker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      LANG: en_US.UTF-8
+      LC_ALL: en_US.UTF-8
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run checker
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CRON_JOB_ORG_API_KEY: ${{ secrets.CRON_JOB_ORG_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/checker.py

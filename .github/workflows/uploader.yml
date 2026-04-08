@@ -1,0 +1,50 @@
+name: 📤 Kishor Publisher — Uploader
+
+# Triggered ONLY by cron-job.org dispatch jobs created dynamically by checker.py.
+# Zero cron — never runs unless checker.py schedules it.
+# One run per queued file. Deletes the cron-job.org job after successful upload.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: uploader
+  cancel-in-progress: false  # Never skip — each run uploads one file
+
+permissions:
+  contents: write
+
+jobs:
+  uploader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      LANG: en_US.UTF-8
+      LC_ALL: en_US.UTF-8
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests pyrogram TgCrypto pymupdf Pillow
+
+      - name: Run uploader
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CRON_JOB_ORG_API_KEY: ${{ secrets.CRON_JOB_ORG_API_KEY }}
+        run: python scripts/uploader.py
