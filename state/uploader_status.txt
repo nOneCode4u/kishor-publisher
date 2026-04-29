@@ -1,2 +1,2 @@
 active
-# Edit to 'active' or 'paused'. Commit to apply, or use /pause /resume bot command.
+# Resumed via /resume bot command.
