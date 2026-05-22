@@ -107,3 +107,25 @@ The bot sends a detailed error notification with full traceback. Send `/resume` 
 ## License
 
 MIT
+
+---
+
+## ☕ Support This Project
+
+This project is free and always will be. If it helped you, a small contribution
+keeps it maintained and ad-free.
+
+**All donors**
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/none123)
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/)
+
+**Crypto (anonymous welcome):**
+
+| Coin | Address |
+|---|---|
+| Ethereum (ETH / USDT / USDC) | `0xYOUR_NONCUSTODIAL_WALLET_ADDRESS` |
+| Bitcoin (BTC) | `bc1YOUR_BTC_ADDRESS` |
+
+All contributions are voluntary and deeply appreciated. ❤️
