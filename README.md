@@ -8,14 +8,13 @@ Detects new issues, schedules uploads with 1-hour gaps, and publishes each as a 
 
 ## How It Works
 
-| Workflow | What it does |
-|---|---|
-| `checker.yml` | Runs once daily. Scans the website for new issues. If found, builds the upload queue and creates scheduled upload jobs. Silent if nothing new. |
-| `uploader.yml` | Uploads one queued file per run. Triggered automatically at the scheduled time. No cron — zero runs when queue is empty. |
-| `bot.yml` | Polls Telegram for owner commands. |
+| Workflow       | What it does                                                                                                                                   |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `checker.yml`  | Runs once daily. Scans the website for new issues. If found, builds the upload queue and creates scheduled upload jobs. Silent if nothing new. |
+| `uploader.yml` | Uploads one queued file per run. Triggered automatically at the scheduled time. No cron — zero runs when queue is empty.                       |
+| `bot.yml`      | Polls Telegram for owner commands.                                                                                                             |
 
 **Upload schedule:** Files found on day D → first upload at 00:00 IST on day D+1, one file per hour.
-
 > To change run times, edit the `cron:` lines in `.github/workflows/checker.yml` and `.github/workflows/bot.yml`.
 
 ---
@@ -55,15 +54,15 @@ kishor-publisher/
 
 **GitHub Secrets** (repo → Settings → Secrets and variables → Actions):
 
-| Secret | Description |
-|---|---|
-| `TELEGRAM_API_ID` | From https://my.telegram.org/apps |
-| `TELEGRAM_API_HASH` | From https://my.telegram.org/apps |
-| `TELEGRAM_BOT_TOKEN` | From @BotFather |
-| `TELEGRAM_OWNER_CHAT_ID` | Your personal Telegram chat ID |
-| `TELEGRAM_CHANNEL_ID` | Your channel's numeric ID |
-| `GH_PAT` | GitHub Personal Access Token (Actions: read+write) |
-| `CRON_JOB_ORG_API_KEY` | API key from cron-job.org (free account) |
+| Secret                   | Description                                        |
+| ------------------------ | -------------------------------------------------- |
+| `TELEGRAM_API_ID`        | From <https://my.telegram.org/apps>                |
+| `TELEGRAM_API_HASH`      | From <https://my.telegram.org/apps>                |
+| `TELEGRAM_BOT_TOKEN`     | From @BotFather                                    |
+| `TELEGRAM_OWNER_CHAT_ID` | Your personal Telegram chat ID                     |
+| `TELEGRAM_CHANNEL_ID`    | Your channel's numeric ID                          |
+| `GH_PAT`                 | GitHub Personal Access Token (Actions: read+write) |
+| `CRON_JOB_ORG_API_KEY`   | API key from cron-job.org (free account)           |
 
 **External service:** One job on [cron-job.org](https://cron-job.org) (free) to trigger the bot workflow every minute.
 
@@ -71,15 +70,15 @@ kishor-publisher/
 
 ## Bot Commands
 
-| Command | What it does |
-|---|---|
-| `/status` | Current status, last uploaded file, queue size |
-| `/queue` | Full upload queue with IST schedule |
-| `/last` | Last successfully uploaded issue |
-| `/history` | Last 30 lines of upload history |
-| `/pause` | Pause checker and uploader |
-| `/resume` | Resume + re-trigger any overdue uploads |
-| `/help` | List all commands |
+| Command    | What it does                                   |
+| ---------- | ---------------------------------------------- |
+| `/status`  | Current status, last uploaded file, queue size |
+| `/queue`   | Full upload queue with IST schedule            |
+| `/last`    | Last successfully uploaded issue               |
+| `/history` | Last 30 lines of upload history                |
+| `/pause`   | Pause checker and uploader                     |
+| `/resume`  | Resume + re-trigger any overdue uploads        |
+| `/help`    | List all commands                              |
 
 ---
 
@@ -112,20 +111,13 @@ MIT
 
 ## ☕ Support This Project
 
-This project is free and always will be. If it helped you, a small contribution
-keeps it maintained and ad-free.
+This project is free and always will be. If it helped you or someone you know access
+Kishor magazine, a small contribution helps keep it running.
 
-**All donors**
+**All donors:**
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/none123)
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/)
-
-**Crypto (anonymous welcome):**
-
-| Coin | Address |
-|---|---|
-| Ethereum (ETH / USDT / USDC) | `0xYOUR_NONCUSTODIAL_WALLET_ADDRESS` |
-| Bitcoin (BTC) | `bc1YOUR_BTC_ADDRESS` |
 
 All contributions are voluntary and deeply appreciated. ❤️
