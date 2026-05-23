@@ -105,7 +105,7 @@ The bot sends a detailed error notification with full traceback. Send `/resume` 
 
 ## License
 
-MIT
+[MIT](LICENSE)
 
 ---
 
