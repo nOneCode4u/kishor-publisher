@@ -109,7 +109,7 @@ The bot sends a detailed error notification with full traceback. Send `/resume` 
 
 ---
 
-## ☕ Support This Project
+## ☕ Support
 
 This project is free and always will be. If it helped you or someone you know access
 Kishor magazine, a small contribution helps keep it running.
