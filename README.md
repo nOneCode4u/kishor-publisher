@@ -151,8 +151,6 @@ If a network or Telegram API error occurs during publication:
 
 This project is free, open-source, and maintained in free time. If it helped you or your community access Kishor magazine, consider supporting further development:
 
-[![Ko-fi Support](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/none123)
-
 [![Donate via Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/none123)
 
 *All contributions are completely voluntary and deeply appreciated!* ❤️
