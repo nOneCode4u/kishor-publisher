@@ -1,4 +1,4 @@
-# Kishor Publisher (किशोर पब्लिशर)
+# 📰 Kishor Publisher (किशोर पब्लिशर)
 
 > Automated Telegram channel publisher for [Kishor (किशोर) monthly magazine](https://kishor.ebalbharati.in/Archives/) archives published by Balbharati. Automatically detects new issues, schedules 1-hour staggered uploads, generates high-quality cover thumbnails, and publishes each magazine with bilingual metadata.
 
