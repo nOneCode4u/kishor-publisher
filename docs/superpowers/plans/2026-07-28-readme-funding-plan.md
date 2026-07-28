@@ -1,3 +1,113 @@
+# Kishor Publisher README & Funding Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Overhaul `README.md`, update `.github/FUNDING.yml`, and create `GITHUB_SETTINGS.md` reference guide for `kishor-publisher`.
+
+**Architecture:** Update repository documentation and funding metadata to align with `nOneCode4u` standards.
+
+**Tech Stack:** Markdown, YAML, GitHub Actions Shields/Badges.
+
+## Global Constraints
+- Funding username must be `none123` on Ko-fi.
+- README badges must use `for-the-badge` style for header shields.
+- Standard Markdown and GitHub Flavored Markdown tags.
+
+---
+
+### Task 1: Update `.github/FUNDING.yml`
+
+**Files:**
+- Modify: `.github/FUNDING.yml`
+
+**Interfaces:**
+- Produces: GitHub Sponsor button and funding links pointing to Ko-fi (`none123`).
+
+- [ ] **Step 1: Write funding configuration**
+
+Set `.github/FUNDING.yml` content to:
+```yaml
+ko_fi: none123
+custom: ["https://ko-fi.com/none123"]
+```
+
+- [ ] **Step 2: Verify file syntax**
+Ensure valid YAML.
+
+- [ ] **Step 3: Commit**
+`git add .github/FUNDING.yml`
+
+---
+
+### Task 2: Create `GITHUB_SETTINGS.md`
+
+**Files:**
+- Create: `GITHUB_SETTINGS.md`
+
+**Interfaces:**
+- Produces: Reference documentation for repository description, website, and topics.
+
+- [ ] **Step 1: Write `GITHUB_SETTINGS.md`**
+
+Content:
+```markdown
+# GitHub Repository Metadata Guide
+
+Use the details below to update the **About** section on the GitHub repository settings page (`https://github.com/nOneCode4u/kishor-publisher`).
+
+---
+
+## 📝 Repository Description
+> Automated daily scraper & Telegram channel publisher for Kishor (किशोर) monthly magazine archive. Features 1-hour staggered queue, MTProto 2 GB uploads, PyMuPDF thumbnails, and interactive bot management.
+
+---
+
+## 🌐 Website
+> https://kishor.ebalbharati.in/Archives/
+
+---
+
+## 🏷️ Topics / Tags
+Add the following topics in **Repo Page → About (⚙️ settings icon) → Topics**:
+
+```text
+telegram-bot
+telegram-uploader
+kishor-magazine
+marathi-books
+ebalbharati
+python
+pyrogram
+github-actions
+automation
+cron-job
+pdf-downloader
+scraper
+```
+
+---
+
+## 💖 Sponsorship Link
+Enable the **Sponsor button** in repository settings (Sponsorships → Ko-fi: `none123`).
+```
+
+- [ ] **Step 2: Commit**
+`git add GITHUB_SETTINGS.md`
+
+---
+
+### Task 3: Overhaul `README.md`
+
+**Files:**
+- Modify: `README.md`
+
+**Interfaces:**
+- Produces: Complete, high-impact `README.md` with badges, mermaid diagrams, feature specs, bot command guide, secrets table, and donation section.
+
+- [ ] **Step 1: Write comprehensive `README.md`**
+
+Full replacement content for `README.md`:
+```markdown
 # Kishor Publisher (किशोर पब्लिशर)
 
 > Automated Telegram channel publisher for [Kishor (किशोर) monthly magazine](https://kishor.ebalbharati.in/Archives/) archives published by Balbharati. Automatically detects new issues, schedules 1-hour staggered uploads, generates high-quality cover thumbnails, and publishes each magazine with bilingual metadata.
@@ -151,6 +261,8 @@ If a network or Telegram API error occurs during publication:
 
 This project is free, open-source, and maintained in free time. If it helped you or your community access Kishor magazine, consider supporting further development:
 
+[![Ko-fi Support](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/none123)
+
 [![Donate via Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/none123)
 
 *All contributions are completely voluntary and deeply appreciated!* ❤️
@@ -160,3 +272,7 @@ This project is free, open-source, and maintained in free time. If it helped you
 ## 📄 License
 
 Distributed under the [MIT License](LICENSE).
+```
+
+- [ ] **Step 2: Commit**
+`git add README.md`
