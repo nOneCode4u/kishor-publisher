@@ -1,44 +1,44 @@
 {
-  "batch_id": "20260408_0527",
+  "batch_id": "20260801_0614",
   "total": 3,
-  "detected_at_utc": "2026-04-08T05:27:12Z",
-  "batch_started_at_utc": "2026-04-08T18:30:39Z",
+  "detected_at_utc": "2026-08-01T06:14:42Z",
+  "batch_started_at_utc": null,
   "items": [
     {
       "index": 0,
-      "filename_orig": "2025_12.pdf",
-      "filename_friendly": "किशोर डिसेंबर २०२५ - Kishor December 2025.pdf",
-      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2025_12.pdf",
-      "size_mb": 14.18,
-      "scheduled_at_utc": "2026-04-08T18:30:00Z",
+      "filename_orig": "2026_03.pdf",
+      "filename_friendly": "किशोर मार्च २०२६ - Kishor March 2026.pdf",
+      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2026_03.pdf",
+      "size_mb": 11.66,
+      "scheduled_at_utc": "2026-08-01T18:30:00Z",
       "scheduled_ist_display": "00:00 IST",
       "cronjob_job_id": null,
-      "status": "uploaded",
-      "uploaded_at_utc": "2026-04-08T18:31:01Z"
+      "status": "pending",
+      "uploaded_at_utc": null
     },
     {
       "index": 1,
-      "filename_orig": "2026_01.pdf",
-      "filename_friendly": "किशोर जानेवारी २०२६ - Kishor January 2026.pdf",
-      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2026_01.pdf",
-      "size_mb": 20.21,
-      "scheduled_at_utc": "2026-04-08T19:30:00Z",
+      "filename_orig": "2026_04.pdf",
+      "filename_friendly": "किशोर एप्रिल २०२६ - Kishor April 2026.pdf",
+      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2026_04.pdf",
+      "size_mb": 9.99,
+      "scheduled_at_utc": "2026-08-01T19:30:00Z",
       "scheduled_ist_display": "01:00 IST",
       "cronjob_job_id": null,
-      "status": "uploaded",
-      "uploaded_at_utc": "2026-04-08T19:31:18Z"
+      "status": "pending",
+      "uploaded_at_utc": null
     },
     {
       "index": 2,
-      "filename_orig": "2026_02.pdf",
-      "filename_friendly": "किशोर फेब्रुवारी २०२६ - Kishor February 2026.pdf",
-      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2026_02.pdf",
-      "size_mb": 19.49,
-      "scheduled_at_utc": "2026-04-08T20:30:00Z",
+      "filename_orig": "2026_05.pdf",
+      "filename_friendly": "किशोर मे २०२६ - Kishor May 2026.pdf",
+      "url": "https://kishor.ebalbharati.in/Archives/include/pdf/2026_05.pdf",
+      "size_mb": 19.11,
+      "scheduled_at_utc": "2026-08-01T20:30:00Z",
       "scheduled_ist_display": "02:00 IST",
       "cronjob_job_id": null,
-      "status": "uploaded",
-      "uploaded_at_utc": "2026-04-08T20:30:51Z"
+      "status": "pending",
+      "uploaded_at_utc": null
     }
   ]
 }
