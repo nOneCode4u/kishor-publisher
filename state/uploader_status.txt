@@ -1,2 +1,2 @@
-active
-# Resumed via /resume bot command.
+paused
+# Auto-paused: upload error. Send /resume to retry.
