@@ -223,20 +223,6 @@ def main():
         ))
         print(f"[INFO] Notification sent ({index}/{total}).")
 
-        # Auto-chain: If more overdue items exist in queue, trigger next uploader run
-        remaining_overdue = [
-            i for i in queue.get("items", [])
-            if i.get("status") == "pending" and parse_utc(i.get("scheduled_at_utc", "")) <= utc_now()
-        ]
-        gh_pat = os.environ.get("GH_PAT", "").strip()
-        if remaining_overdue and gh_pat:
-            print(f"[INFO] {len(remaining_overdue)} remaining overdue item(s) in queue. Dispatching next uploader run...")
-            try:
-                from scripts.utils.github_api import trigger_workflow_dispatch
-                trigger_workflow_dispatch("uploader.yml", gh_pat)
-            except Exception as e:
-                print(f"[WARN] Failed to auto-dispatch next overdue upload: {e}")
-
     except SystemExit:
         raise
     except Exception:

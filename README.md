@@ -45,9 +45,6 @@ sequenceDiagram
     Uploader->>Uploader: Generates PyMuPDF HD thumbnail (quality=100)
     Uploader->>TG: Uploads via Pyrogram MTProto with bilingual caption
     Uploader->>State: Updates state/last_uploaded.txt & upload_history.md
-    opt Overdue Backlog
-        Uploader->>Uploader: Auto-chains subsequent overdue files sequentially
-    end
 ```
 
 ### Workflow Summary
@@ -65,7 +62,6 @@ sequenceDiagram
 * 📰 **Automated Issue Scraper**: Continuously monitors eBalbharati archives for new and historical issues of Kishor magazine.
 * ⏰ **Smart IST Queue Engine**: Automatically schedules uploads starting at `00:00 IST` on day D+1 with a 1-hour gap between consecutive issue uploads.
 * 🛡️ **SSL Resilience & Defense-in-Depth**: Automatic graceful fallback for upstream incomplete TLS certificate chains (e.g. missing emSign/eMudhra intermediate certs) combined with multi-layer file integrity verification (`%PDF-` magic bytes, size ratio validation, and SHA-256 cryptographic checksums).
-* 🔄 **Autonomous Backlog Drainage**: Uploader automatically detects and sequentially chains remaining overdue items in the batch queue without requiring manual intervention.
 * 🖼️ **PyMuPDF HD Cover Thumbnails**: Generates uncompressed, high-definition JPEG thumbnails (quality=100) from the first page of each PDF issue.
 * ⚡ **Pyrogram MTProto Protocol**: Uploads directly via Telegram User/Bot MTProto client, supporting files up to 2 GB and bypassing Telegram Bot API's 50 MB restriction.
 * 🤖 **Interactive Admin Bot**: Full remote control over channel queue and operational state directly from Telegram.
