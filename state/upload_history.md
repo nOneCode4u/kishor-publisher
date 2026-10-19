@@ -25,3 +25,6 @@ Original: 2026_06.pdf • 20.26 MB • Channel msg_id: 826 • SHA256: 219330a6b
 
 ## 19/10/2026 23:29:30 IST — किशोर जुलै २०२६ - Kishor July 2026.pdf
 Original: 2026_07.pdf • 12.51 MB • Channel msg_id: 827 • SHA256: 366c167ad4e6fb3b…
+
+## 19/10/2026 23:30:27 IST — किशोर ऑगस्ट २०२६ - Kishor August 2026.pdf
+Original: 2026_08.pdf • 11.92 MB • Channel msg_id: 828 • SHA256: 594dc230527b98e3…
