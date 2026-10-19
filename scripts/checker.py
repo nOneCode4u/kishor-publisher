@@ -19,11 +19,12 @@ Flow:
 """
 
 import sys, os, datetime, traceback
-from scripts.utils.http_client import robust_head
 
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from scripts.utils.http_client import robust_head
 
 from scripts.utils.naming   import build_friendly_filename, parse_orig_filename
 from scripts.utils.state    import (

@@ -20,11 +20,12 @@ Flow:
 """
 
 import sys, os, hashlib, datetime, traceback, tempfile, time
-from scripts.utils.http_client import robust_get
 
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from scripts.utils.http_client import robust_get
 
 from scripts.utils.naming          import build_friendly_filename
 from scripts.utils.state           import (
