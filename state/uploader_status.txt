@@ -1,2 +1,2 @@
-paused
-# Auto-paused: upload error. Send /resume to retry.
+active
+# Operational - issue detection and uploads active.

@@ -6,7 +6,10 @@ Quality=100 (maximum). Reduces only if output exceeds Telegram's 200 KB limit.
 """
 
 import os
-import fitz
+try:
+    import pymupdf
+except ImportError:
+    import fitz as pymupdf
 from PIL import Image
 
 MAX_DIM   = 320
@@ -16,13 +19,13 @@ QUALITIES = [100, 95, 90, 85, 80, 70, 60]
 
 def generate_thumbnail(pdf_path: str, output_path: str) -> bool:
     try:
-        doc = fitz.open(pdf_path)
+        doc = pymupdf.open(pdf_path)
         if doc.page_count == 0:
             print("[THUMB] No pages."); doc.close(); return False
         page = doc[0]
         rect = page.rect
         zoom = min(MAX_DIM / rect.width, MAX_DIM / rect.height)
-        pix  = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False, colorspace=fitz.csRGB)
+        pix  = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False, colorspace=pymupdf.csRGB)
         doc.close()
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
         print(f"[THUMB] Rendered: {img.width}×{img.height} px")

@@ -41,10 +41,13 @@ sequenceDiagram
     Checker->>State: Builds upload queue (1-hour gap schedule)
     Checker->>Cron: Schedules dynamic upload dispatch jobs
     Cron->>Uploader: Triggers job at scheduled time
-    Uploader->>Site: Downloads PDF issue
+    Uploader->>Site: Downloads PDF issue (with TLS resilience)
     Uploader->>Uploader: Generates PyMuPDF HD thumbnail (quality=100)
     Uploader->>TG: Uploads via Pyrogram MTProto with bilingual caption
     Uploader->>State: Updates state/last_uploaded.txt & upload_history.md
+    opt Overdue Backlog
+        Uploader->>Uploader: Auto-chains subsequent overdue files sequentially
+    end
 ```
 
 ### Workflow Summary
@@ -61,6 +64,8 @@ sequenceDiagram
 
 * 📰 **Automated Issue Scraper**: Continuously monitors eBalbharati archives for new and historical issues of Kishor magazine.
 * ⏰ **Smart IST Queue Engine**: Automatically schedules uploads starting at `00:00 IST` on day D+1 with a 1-hour gap between consecutive issue uploads.
+* 🛡️ **SSL Resilience & Defense-in-Depth**: Automatic graceful fallback for upstream incomplete TLS certificate chains (e.g. missing emSign/eMudhra intermediate certs) combined with multi-layer file integrity verification (`%PDF-` magic bytes, size ratio validation, and SHA-256 cryptographic checksums).
+* 🔄 **Autonomous Backlog Drainage**: Uploader automatically detects and sequentially chains remaining overdue items in the batch queue without requiring manual intervention.
 * 🖼️ **PyMuPDF HD Cover Thumbnails**: Generates uncompressed, high-definition JPEG thumbnails (quality=100) from the first page of each PDF issue.
 * ⚡ **Pyrogram MTProto Protocol**: Uploads directly via Telegram User/Bot MTProto client, supporting files up to 2 GB and bypassing Telegram Bot API's 50 MB restriction.
 * 🤖 **Interactive Admin Bot**: Full remote control over channel queue and operational state directly from Telegram.
@@ -76,7 +81,7 @@ kishor-publisher/
 ├── .github/
 │   ├── FUNDING.yml              # GitHub Sponsors & Ko-fi configuration
 │   └── workflows/
-│       ├── checker.yml          # Daily issue scanner & queue builder
+│       ├── checker.yml          # Daily issue scanner & queue builder (with pip cache)
 │       ├── uploader.yml         # Single-file download, thumbnail & MTProto uploader
 │       └── bot.yml              # Admin bot Telegram polling workflow
 ├── scripts/
@@ -84,11 +89,12 @@ kishor-publisher/
 │   ├── uploader.py          # PDF fetching, rendering & Telegram publication
 │   ├── bot.py               # Telegram bot command dispatcher & /resume handler
 │   └── utils/
+│       ├── http_client.py   # Resilient HTTP client with SSL fallback & integrity checks
 │       ├── cronjob_api.py   # REST API wrapper for cron-job.org dynamic scheduling
 │       ├── github_api.py    # GitHub REST API workflow dispatch handler
 │       ├── naming.py        # Bilingual Marathi/English title formatting
 │       ├── notifications.py # Telegram notification templates
-│       ├── state.py         # State I/O, IST time conversions & Git commit helper
+│       ├── state.py         # State I/O, IST time conversions & resilient Git helper
 │       ├── telegram_client.py  # Pyrogram MTProto uploader interface
 │       └── thumbnail.py     # PyMuPDF PDF page renderer
 ├── state/
@@ -97,6 +103,9 @@ kishor-publisher/
 │   ├── pending_queue.json   # Queue of pending uploads with IST timestamps
 │   ├── upload_history.md    # Permanent publication log with SHA-256 checksums
 │   └── uploader_status.txt  # System state: 'active' or 'paused'
+├── tests/
+│   ├── test_http_client.py  # Unit tests for SSL resilience and HTTP requests
+│   └── test_naming.py       # Unit tests for filename parsing and bilingual titles
 ├── GITHUB_SETTINGS.md       # Metadata guide for repo settings
 ├── LICENSE                  # MIT License
 └── requirements.txt         # Python dependencies

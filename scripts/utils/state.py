@@ -161,7 +161,7 @@ def git_pull():
         print(f"[GIT] pull warning (non-fatal): {e}")
 
 
-def git_commit_and_push(commit_message: str, files: list):
+def git_commit_and_push(commit_message: str, files: list, max_retries: int = 3):
     _run(["git", "config", "--global", "user.name",  "kishor-publisher-bot"])
     _run(["git", "config", "--global", "user.email", "kishor-publisher@github.com"])
     for f in files:
@@ -171,5 +171,15 @@ def git_commit_and_push(commit_message: str, files: list):
         print("[GIT] Nothing to commit.")
         return
     _run(["git", "commit", "-m", commit_message])
-    _run(["git", "push"])
-    print(f"[GIT] Pushed: {commit_message}")
+    for attempt in range(1, max_retries + 1):
+        try:
+            _run(["git", "push"])
+            print(f"[GIT] Pushed: {commit_message}")
+            return
+        except Exception as e:
+            print(f"[GIT] Push attempt {attempt}/{max_retries} failed: {e}")
+            if attempt < max_retries:
+                print("[GIT] Pulling rebase before retry...")
+                _run(["git", "pull", "--rebase", "origin", "main"])
+            else:
+                raise

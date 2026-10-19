@@ -18,7 +18,8 @@ Flow:
     6. Hard error → pause + notify + exit 1.
 """
 
-import sys, os, datetime, traceback, requests
+import sys, os, datetime, traceback
+from scripts.utils.http_client import robust_head
 
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
@@ -45,7 +46,7 @@ MAX_FUTURE_MONTHS      = 24
 def probe_pdf(fname: str) -> tuple:
     url = BASE_URL + fname
     try:
-        resp = requests.head(url, headers=HEADERS, timeout=12, allow_redirects=True)
+        resp = robust_head(url, headers=HEADERS, timeout=12, allow_redirects=True)
         if resp.status_code != 200:
             print(f"[CHECK] {fname} → HTTP {resp.status_code}")
             return False, 0.0
@@ -56,7 +57,7 @@ def probe_pdf(fname: str) -> tuple:
         size_mb = round(int(resp.headers.get("content-length", 0)) / (1024 * 1024), 2)
         print(f"[CHECK] {fname} → ✓ {size_mb:.2f} MB")
         return True, size_mb
-    except requests.RequestException as e:
+    except Exception as e:
         print(f"[CHECK] {fname} → error: {e}")
         return False, 0.0
 
