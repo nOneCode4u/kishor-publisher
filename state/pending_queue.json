@@ -24,9 +24,9 @@
       "size_mb": 12.51,
       "scheduled_at_utc": "2026-10-18T19:30:00Z",
       "scheduled_ist_display": "01:00 IST",
-      "cronjob_job_id": 8669117,
-      "status": "pending",
-      "uploaded_at_utc": null
+      "cronjob_job_id": null,
+      "status": "uploaded",
+      "uploaded_at_utc": "2026-10-19T17:59:30Z"
     },
     {
       "index": 2,
